@@ -1,20 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageIdPrefix>jsm33t</PackageIdPrefix>
-		<PackageId>$(PackageIdPrefix).PWBAssistant</PackageId>
-		<Version>0.0.10</Version>
+		<PackageId>jsm33t.PWBAssistant</PackageId>
+		<Version>0.1.0</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Authors>Jasmeet Singh (jsm33t)</Authors>
 		<Company>jsm33t</Company>
-		
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<ApplicationIcon>libicon.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Playwright" Version="1.46.0" />
+	  <Content Include="libicon.ico" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Playwright" Version="1.46.0" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
+		<None Include="libicon.ico" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	
 
 </Project>
