@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageIdPrefix>jsm33t</PackageIdPrefix>
+		<PackageId>$(PackageIdPrefix).PWBAssistant</PackageId>
+		<Version>0.0.10</Version>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>Jasmeet Singh (jsm33t)</Authors>
+		<Company>jsm33t</Company>
+		
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Playwright" Version="1.46.0" />
+	</ItemGroup>
+
+</Project>
