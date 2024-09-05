@@ -1,10 +1,12 @@
 ﻿using Microsoft.Playwright;
 using PlayWrightBotAssist;
 using PlayWrightBotAssist.Assistants;
+using PWBAssiatant.Assistants;
+using System.Data;
 
 namespace PWBAssistant
 {
-    public class PWBAssist : IPWBAssist
+    public class PWBAssist
     {
         private  IPlaywright _playwright;
         private  IBrowser _browser;
@@ -42,9 +44,9 @@ namespace PWBAssistant
         }
 
         public async Task NavigateTo(string url) => await NavigationAssist.NavigateTo(_page, url);
-
         public async Task CleanUp() => await _browser.CloseAsync();
-
+        public async Task<DataTable> ScrapeTable(string HeadSelector, string BodySelector) => await DataScrapeAssistant.ScrapeTable(_page, HeadSelector, BodySelector);
+        public async Task<DataTable> ScrapeTable(List<string> manualColumnHeaders, string BodySelector) => await DataScrapeAssistant.ScrapeTable(_page,manualColumnHeaders,BodySelector);
         public async Task<IPage> GetPageObject() => _page;
     }
 }

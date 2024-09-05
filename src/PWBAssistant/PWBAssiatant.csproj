@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageIdPrefix>jsm33t</PackageIdPrefix>
 		<PackageId>jsm33t.PWBAssistant</PackageId>
-		<Version>0.1.0</Version>
+		<Version>0.2.0</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Authors>Jasmeet Singh (jsm33t)</Authors>
 		<Company>jsm33t</Company>
