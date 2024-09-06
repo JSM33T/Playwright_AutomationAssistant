@@ -7,20 +7,18 @@ namespace PWBAssiatant.Assistants
     {
         public static async Task<DataTable> ScrapeTable(IPage page, string tableSelector)
         {
-            DataTable dataTable = new DataTable();
+            DataTable dataTable = new();
 
             // Find the table element based on the provided selector
             var table = await page.QuerySelectorAsync(tableSelector);
-
             if (table != null)
             {
-                // Get the table headers (assuming they are in the thead section)
+                // Get the table headers (if present in the thead)
                 var headerCells = await table.QuerySelectorAllAsync("thead th");
                 foreach (var headerCell in headerCells)
                 {
                     dataTable.Columns.Add(headerCell.InnerTextAsync().GetAwaiter().GetResult());
                 }
-
                 // Drill down into the table rows to collect data
                 var rows = await table.QuerySelectorAllAsync("tbody tr");
 
@@ -57,7 +55,6 @@ namespace PWBAssiatant.Assistants
             {
                 dataTable.Columns.Add(header);
             }
-
             // Iterate through each row (tr) in the tbody
             var rows = await tbody.QuerySelectorAllAsync("tr");
             foreach (var row in rows)
@@ -86,11 +83,11 @@ namespace PWBAssiatant.Assistants
 
             // Locate the table body (tbody) element
             var tbodyHandle = await page.QuerySelectorAsync(BodySelector) ?? throw new Exception("Invalid body selector");
-            
+
             if (CustomHeaders == null || CustomHeaders.Count == 0)
             {
                 // Extract column headers from the first row of the table body
-                var firstRow = await tbodyHandle.QuerySelectorAsync("tr") ??  throw new Exception("No headers passed");
+                var firstRow = await tbodyHandle.QuerySelectorAsync("tr") ?? throw new Exception("No headers passed");
 
                 var firstRowCells = await firstRow.QuerySelectorAllAsync("td");
 
@@ -115,6 +112,7 @@ namespace PWBAssiatant.Assistants
 
                 // Extract data from each row
                 var cells = await rowHandle.QuerySelectorAllAsync("td");
+
                 var cellTextTasks = cells.Select(cell => cell.InnerTextAsync());
                 var cellTexts = await Task.WhenAll(cellTextTasks);
 
@@ -124,7 +122,7 @@ namespace PWBAssiatant.Assistants
                     int columnsToAdd = cellTexts.Length - dataTable.Columns.Count;
                     for (int i = 0; i < columnsToAdd; i++)
                     {
-                        dataTable.Columns.Add($"<empty_{i+1}>");
+                        dataTable.Columns.Add($"<empty_{i + 1}>");
                     }
                 }
 
