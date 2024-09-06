@@ -91,7 +91,7 @@ namespace PWBAssiatant.Assistants
 
                 var firstRowCells = await firstRow.QuerySelectorAllAsync("td");
 
-                CustomHeaders = [];
+                CustomHeaders = new List<string>();
                 foreach (var cell in firstRowCells)
                 {
                     CustomHeaders.Add($"Column {CustomHeaders.Count + 1}");

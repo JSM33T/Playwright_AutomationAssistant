@@ -17,8 +17,8 @@ namespace PWBAssistant
             {
                 Headless = false,
                 ExecutablePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-                Args =
-                [
+                Args = new[] {
+
                     "--no-sandbox",
                     "--disable-setuid-sandbox",
                     "--disable-extensions",
@@ -35,7 +35,7 @@ namespace PWBAssistant
                     "--disable-background-networking",
                     "--no-zygote",
                     "--disable-notifications"
-                ]
+                }
             };
 
             _playwright = await Playwright.CreateAsync();
@@ -48,8 +48,8 @@ namespace PWBAssistant
             {
                 Headless = useHeadless,
                 ExecutablePath = executablePath,
-                Args =
-                [
+                Args = new[] {
+
                     "--no-sandbox",
                     "--disable-setuid-sandbox",
                     "--disable-extensions",
@@ -66,7 +66,7 @@ namespace PWBAssistant
                     "--disable-background-networking",
                     "--no-zygote",
                     "--disable-notifications"
-                ]
+                }
             };
 
             if (!string.IsNullOrEmpty(screenshotPath))
